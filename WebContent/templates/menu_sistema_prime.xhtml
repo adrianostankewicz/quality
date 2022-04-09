@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags"> 
+<ui:composition>
+	<sec:ifAnyGranted roles="ROLE_USUARIO">
+		<h:form id="menu">
+			<p:menubar>
+				<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+					<p:submenu label="Administrativo" icon="iconConfiguracao16">
+						<p:submenu label="Cadastro" icon="iconCadastro16">
+							<p:submenu label="Usuário" icon="iconAdministrativo16">
+								<p:menuitem value="Adicionar" icon="iconAdicionar16" action="/admin/usuario" />
+								<p:menuitem value="Listar" icon="iconUsuarios16" action="/admin/manutencaoUsuarios" />
+							</p:submenu>
+							<p:submenu label="Fabricante" icon="iconFabricante16">
+								<p:menuitem value="Adicionar" icon="iconAdicionar16" action="/admin/fabricante" />
+								<p:menuitem value="Listar" icon="iconFabricantes16" action="/admin/manutencaoFabricantes" />
+							</p:submenu>
+							<p:submenu label="Transportadora" icon="iconTransportadora16">
+								<p:menuitem value="Adicionar" icon="iconAdicionar16" action="/admin/fabricante" />
+								<p:menuitem value="Listar" icon="iconTransportadoras16" action="/admin/manutencaoTransportadoras" />
+							</p:submenu>
+						</p:submenu>
+					</p:submenu>
+				</sec:ifAnyGranted>
+				<p:submenu label="Ocorrência" icon="iconOcorrencia16" >					
+					<p:menuitem value="Nova" icon="iconAdicionar16" action="/public/ocorrencia" ajax="false"/>
+				</p:submenu>
+				<p:submenu label="Sistema" icon="iconPreferencias16" >					
+					<p:menuitem value="Tema" icon="iconTemaSistema16" action="/limited/temaSistema" ajax="false"/>
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+	</sec:ifAnyGranted>
+</ui:composition>
+</html>

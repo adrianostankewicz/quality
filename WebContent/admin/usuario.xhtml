@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">Cadastro de Usuários</ui:define>
+	<ui:define name="corpo">
+	<h:form id="cadastro">
+		<p:messages />
+		<h:inputHidden value="#{usuarioBean.usuario.id}" />
+		<h:inputHidden value="#{usuarioBean.usuario.ativo}" />
+		<h:inputHidden value="#{usuarioBean.usuario.dataCadastro}" >
+			<f:convertDateTime dateStyle="medium"/>
+		</h:inputHidden>
+		
+		<h:panelGrid columns="2">
+			<p:outputLabel for="nome" value="Nome: " />
+			<p:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30" maxlength="50"
+							required="true" requiredMessage="Qual o seu nome?" > 
+				<f:validateLength minimum="10" maximum="50" />
+			</p:inputText>
+			
+			<p:outputLabel for="email" value="E-mail: " />
+			<h:panelGroup>
+				<p:inputText id="email" label="E-mail" value="#{usuarioBean.usuario.email}" size="50" maxlength="100"
+									required="true" requiredMessage="Você tem e-mail?" validatorMessage="E-mail inválido" >
+					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+				</p:inputText>
+				<p:message for="email"/>
+			</h:panelGroup>
+			
+			<p:outputLabel for="login" value="Login: " />
+			<p:inputText id="login" label="Login" value="#{usuarioBean.usuario.login}" size="15" maxlength="15"
+							required="true" requiredMessage="Login ou senha inválidos!" 
+								validatorMessage="Login ou senha inválidos!" >
+				<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}" />
+			</p:inputText>
+			
+			<p:outputLabel for="senha" value="Senha: " />
+			<p:password id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" size="10" maxlength="10" required="true"
+							requiredMessage="Login ou senha inválidos!" redisplay="true" feedback="true" />
+			
+			<p:outputLabel for="confirmaSenha" value="Confirmar Senha: " />
+			<p:password id="confirmaSenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10" required="true"
+							requiredMessage="Login ou senha inválidos!" redisplay="true" feedback="true" />				 
+		</h:panelGrid>
+		
+		<p:commandButton action="#{usuarioBean.salvar}" value="Salvar" ajax="false"/>
+	</h:form>
+	</ui:define>
+</ui:composition>
+</html>

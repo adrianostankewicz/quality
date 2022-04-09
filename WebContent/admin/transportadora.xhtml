@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+<ui:composition template="/templates/interna.xhtml">
+<ui:define name="titulo">Cadastro de Transportadoras</ui:define>
+<ui:define name="corpo">
+	<h:form>
+	<p:messages />
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Nome: " />
+			<p:inputText id="nome" value="#{transportadoraBean.transportadora.nome}" size="50" required="true"
+							requiredMessage="Qual Transportadora?" >
+				<f:validateLength minimum="1" maximum="50" />
+			</p:inputText>
+			<p:commandButton action="#{transportadoraBean.salvar}" value="Salvar" ajax="false"/>
+		</h:panelGrid>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,137 @@
+body, td, th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+th {
+	background: url(#{resource['pictures:fundo_claro.png']}); 
+	min-height: 25px;
+	padding: 3px;
+}
+
+img {
+	border:0px;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto
+}
+	
+#titulo {
+	float: left;
+	font-size: 25pt;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#logotipo {
+	float: right;
+	text-align: right;
+}
+
+#corpo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	min-height: 600px;
+}
+
+.info {
+	font-weight: bold;
+	color: green;
+}
+
+.warn {
+	font-weight: bold;
+	color: #FFCC00;
+}
+
+.fatal, .error {
+	font-weight: bold;
+	color: red;
+}
+
+.iconAdministrativo16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:administrativo16.png']}) !important;
+}
+
+.iconAdicionar16{
+	width: 16px; 
+	height: 16px;
+	margin-right: 5px; 
+	background-image: url(#{resource['pictures:adicao16.png']}) !important;
+}
+
+.iconOcorrencia16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:ocorrencia16.png']}) !important;
+}
+
+.iconConfiguracao16{
+	width: 16px; 
+	height: 16px;
+	margin-right: 5px; 
+	background-image: url(#{resource['pictures:configuracao16.png']}) !important;
+}
+
+.iconUsuarios16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:usuarios16.png']}) !important;
+}
+
+.iconCadastro16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:cadastro16.png']}) !important;
+}
+
+.iconFabricante16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:fabricante16.png']}) !important;
+}
+
+.iconTransportadora16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:transportadora16.png']}) !important;
+}
+
+.iconFabricantes16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:fabricantes16.png']}) !important;
+}
+
+.iconTransportadoras16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:transportadoras16.png']}) !important;
+}
+
+.iconTemaSistema16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:temaSistema16.png']}) !important;
+}
+
+.iconPreferencias16{
+	width: 16px; 
+	height: 16px; 
+	margin-right: 5px;
+	background-image: url(#{resource['pictures:preferencias16.png']}) !important;
+}

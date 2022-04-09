@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/interna.xhtml">
+<ui:define name="titulo">Relatório de Ocorrências</ui:define> 
+<ui:define name="corpo">
+	<h:form>
+		<h:panelGrid columns="6">
+			<p:outputLabel value="Data Inicio: " />
+			<p:calendar id="dataInicio" value="#{ocorrenciaBean.dataInicio}"
+				mode="popup" showOn="button" size="15" locale="pt_BR" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy">
+				<f:convertDateTime locale="pt_BR" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy"/>
+			</p:calendar>
+
+			<p:outputLabel value="Data Fim: " />
+			<p:calendar id="dataFim" value="#{ocorrenciaBean.dataFim}"
+				mode="popup" showOn="button" size="15" locale="pt_BR" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy">
+				<f:convertDateTime locale="pt_BR" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy"/>
+			</p:calendar>	
+
+			<h:outputText />
+			<p:commandButton action="#{ocorrenciaBean.filtrar}" value="Filtrar" ajax="false" />
+		</h:panelGrid>
+		<p:panel header="Gráfico Fabricantes" >
+			<p:barChart title=" Quantidade de ocorrências por Fabricantes" value="#{ocorrenciaBean.graficoFabricantesModel}" 
+						legendPosition="ne" style="height:400px; width:500px;" animate="true"/>
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

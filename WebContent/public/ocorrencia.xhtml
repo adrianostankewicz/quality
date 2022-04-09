@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view contentType="text/html">	
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">Ocorrência</ui:define>
+	<ui:define name="corpo">
+		<h:form>
+			<p:messages />
+			<p:panel header="Registro Diário de Recebimento - Officer"
+				style="text-align:center">
+				<p:panel header="Dados do Recebimento" style="text-align:left">
+					<h:panelGrid style="border: none;" cellpadding="6">
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Data Agendamento:" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:calendar id="dataAgendamento"
+									value="#{ocorrenciaBean.ocorrencia.dataAgendamento}"
+									mode="popup" showOn="button" size="15" required="true"
+									requiredMessage="Favor inserir uma data!"  style="padding: 5px;" locale="pt_BR" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy">
+									<f:convertDateTime locale="pt_BR" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy"/>
+								</p:calendar>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Hora Agendamento:" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:inputMask id="horaAgendamento"
+									value="#{ocorrenciaBean.ocorrencia.horaAgendamento}"
+									mask="99:99" size="6" required="true" style="padding: 5px;" />
+							</p:column>
+						</p:row>
+						<p:row>	
+							<p:column>
+								<p:outputLabel value="Transportadora:" style="margin-right: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu
+									value="#{ocorrenciaBean.ocorrencia.transportadora}"
+									style="width:160px; margin-left: 5px; margin-right: 5px;" >
+									<f:selectItems value="#{transportadoraBean.transportadoras}"
+										var="transportadora" itemLabel="#{transportadora.nome}"
+										itemValue="#{transportadora}" required="true" />
+									<f:converter converterId="transportadoraConverter" />
+								</p:selectOneMenu>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Fabricante:" style="margin-left: 5px; margin-right: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:selectOneMenu value="#{ocorrenciaBean.ocorrencia.fabricante}"
+									style="width:160px; margin-left: 5px; margin-right: 5px;">
+									<f:selectItems value="#{fabricanteBean.fabricantes}"
+										var="fabricante" itemLabel="#{fabricante.nome}"
+										itemValue="#{fabricante}" required="true" />
+									<f:converter converterId="fabricanteConverter" />
+								</p:selectOneMenu>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Qty NFs Agendadas:" style="margin-right: 5px;" />
+							</p:column>
+							<p:column>
+								<p:inputText id="qtyNFsAgendadas"
+									value="#{ocorrenciaBean.ocorrencia.qtyNFAgendada}" size="4"
+									required="true" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Qty NFs Recebidas:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputText id="qtyNFsRecebidas"
+									value="#{ocorrenciaBean.ocorrencia.qtyNFRecebida}" size="4"
+									required="true" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Qty Peças Recebidas:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputText id="qtyPecas"
+									value="#{ocorrenciaBean.ocorrencia.qtyPecasRecebidas}" size="4"
+									required="true" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Qty Volumes Agendado:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputText id="qtyVolumeAgendado"
+									value="#{ocorrenciaBean.ocorrencia.qtyVolumeAgendado}" size="4"
+									required="true" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Qty Volumes Recebido:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputText id="qtyVolumeRecebido"
+									value="#{ocorrenciaBean.ocorrencia.qtyVolumeRecebido}" size="4"
+									required="true" style="padding: 5px;"/>
+							</p:column>
+						</p:row>
+						<p:row>							
+							<p:column>
+								<p:outputLabel value="Qty Veículo(s):" style="margin-right: 5px;"/>
+							</p:column>							
+							<p:column>
+								<p:inputText id="qtyVeiculo"
+									value="#{ocorrenciaBean.ocorrencia.qtyVeiculos}" size="4"
+									required="true" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Hora de Chegada Portaria:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputMask id="horaPortaria"
+									value="#{ocorrenciaBean.ocorrencia.horaChegadaPortaria}" mask="99:99"
+									size="6" required="true" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Hora de Chegada Doca:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputMask id="horaDoca"
+									value="#{ocorrenciaBean.ocorrencia.horaChegadaDoca}" mask="99:99"
+									size="6" required="true" style="padding: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Hora de Liberação Veículo:" style="padding: 5px; margin-left: 10px;"/>
+							</p:column>
+							<p:column>
+								<p:inputMask id="horaLiberaVeiculo"
+									value="#{ocorrenciaBean.ocorrencia.horaSaidaDoca}"
+									mask="99:99" size="6" required="true" style="padding: 5px;"/>
+							</p:column>
+						</p:row>
+					</h:panelGrid>
+				</p:panel>
+				<p:panel header="Dados do Transportador" style="text-align:left">
+					<h:panelGrid cellpadding="5">
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Carga com stretch?" style="padding: 5px; margin-left: 10px" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.cargaStretch}" style="padding: 5px;" />
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Volume danificado no transporte?" style="padding: 5px; margin-left: 10px" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.volumeDanificado}" style="padding: 5px;" />
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Necessário ajudante?" style="padding: 5px; margin-left: 10px" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.necessarioAjudante}" style="padding: 5px;" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Respeitado o empilhamento máximo?" style="margin-right: 5px;" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.empilhamnetoMaximo}" style="padding: 5px;" />
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Nota Fiscal sem agendamento?" style=" padding: 5px; margin-left: 10px;" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.nfAgendamento}" style="padding: 5px;" />
+							</p:column>
+							<p:column>
+								<p:outputLabel value="O ajudante compareceu?" style="padding: 5px; margin-left: 10px;" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.ajudanteCompareceu}" style="padding: 5px;" />
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Carga paletizada?" style="padding: 5px; margin-left: 10px;" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.cargaPaletizada}" style="padding: 5px;" />
+							</p:column>
+							<p:column>
+								<p:outputLabel value="Houve mistura de PartNumber?" style="padding: 5px; margin-left: 10px;" />
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.misturaPartNumber}" style="padding: 5px;" />
+							</p:column>
+						</p:row>
+					</h:panelGrid>
+				</p:panel>
+				<p:panel header="Dados Officer" style="text-align:left">
+					<h:panelGrid cellpadding="5">
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Pedido liberado?" style="margin-right: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:selectBooleanCheckbox
+									value="#{ocorrenciaBean.ocorrencia.pedidoLiberado}" style="padding: 5px;"/>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Observações Gerais:" style="margin-right: 5px;"/>
+							</p:column>
+							<p:column>
+								<p:inputTextarea id="obsGeral"
+									value="#{ocorrenciaBean.ocorrencia.observacoes}"
+									autoResize="false" cols="150" rows="1"/>
+							</p:column>
+						</p:row>
+					</h:panelGrid>
+				</p:panel>
+				<br />
+				<p:commandButton action="#{ocorrenciaBean.salvar}" value="Salvar"
+					ajax="false" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</f:view>
+</html>

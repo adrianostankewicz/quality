@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+<f:view contentType="text/html">
+<h:head>
+	<title><ui:insert name="titulo">Officer</ui:insert></title>
+	<h:outputStylesheet library="css" name="prime.css"/> 
+</h:head> 
+<h:body> 
+	<div id="container">
+		<div id="barra_menu">
+	    	<ui:insert name="barra_menu">
+	    		<ui:include src="/templates/menu_sistema_prime.xhtml"/>
+	   		</ui:insert>   
+		</div>
+		<div id="corpo">
+			<ui:insert name="corpo"/>    
+		</div>
+	</div>
+</h:body>
+</f:view> 
+</html>

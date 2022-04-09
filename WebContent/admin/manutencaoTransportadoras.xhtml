@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/interna.xhtml">
+<ui:define name="titulo">Cadastro de Transportadoras</ui:define>	 
+<ui:define name="corpo">
+	<h:form>
+		<p:messages />
+		<p:dataTable value="#{transportadoraBean.transportadoras}" var="transportadora" rules="rows" cellpadding="5">		
+			<f:facet name="header">Listagem de Transportadoras</f:facet>
+			<f:facet name="footer">Fim da listagem</f:facet>
+			<p:column style="text-align: center;">
+				<f:facet name="header">Código</f:facet>
+				#{transportadora.idTransportadora}
+			</p:column>
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+				#{transportadora.nome}
+			</p:column>
+			<p:column style="text-align: center;">
+				<h:commandLink action="#{transportadoraBean.editar}" ajax="false">
+					<h:graphicImage library="pictures" name="editar16.png" style="border:0" />
+					<f:setPropertyActionListener target="#{transportadoraBean.transportadora}" value="#{transportadora}" />
+				</h:commandLink>
+			</p:column>
+			<p:column style="text-align: center;">
+				<h:commandLink action="#{transportadoraBean.excluir}" ajax="false"	>
+					<h:graphicImage library="pictures" name="excluir16.png" style="border:0" />
+					<f:setPropertyActionListener target="#{transportadoraBean.transportadora}" value="#{transportadora}" />
+				</h:commandLink>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<h:form>
+		<br />
+		<p:commandButton action="#/admin/transportadora" value="Cadastrar" ajax="false"/>
+	</h:form>
+</ui:define> 
+</ui:composition>
+</html>

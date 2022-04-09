@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+<ui:composition>
+	<sec:ifAnyGranted roles="ROLE_USUARIO">
+		<h:form id="menu">
+			<table width="100%">
+			<tr>
+				<td align="left">
+					<p:commandLink action="/public/ocorrencia" title="Ocorrência" >
+						<h:graphicImage library="pictures" name="ocorrencia16.png" />
+					</p:commandLink>
+					<p:commandLink action="/admin/transportadora" title="Cadastro de Transportadoras" style="margin-left: 10px;">
+						<h:graphicImage library="pictures" name="transportadora16.png" />
+					</p:commandLink>
+					<p:commandLink action="/admin/fabricante" title="Cadastro de Fabricantes" style="margin-left: 10px;">
+						<h:graphicImage library="pictures" name="fabricante16.png" />
+					</p:commandLink>
+					<p:commandLink action="/limited/relatorioOcorrencias" title="Relatório de Ocorrências" style="margin-left: 10px;">
+						<h:graphicImage library="pictures" name="relatorio16.png" />
+					</p:commandLink>
+					<p:commandLink action="/limited/graficoOcorrencias" title="Gráfico de Ocorrências" style="margin-left: 10px;">
+						<h:graphicImage library="pictures" name="estatistica16.png" />
+					</p:commandLink>
+					<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+						<h:commandLink action="/admin/manutencaoUsuarios" title="Administrativo" style="margin-left: 10px;">
+							<h:graphicImage library="pictures" name="administrativo16.png" />
+						</h:commandLink>
+					</sec:ifAnyGranted>
+					<p:commandLink action="/limited/home" title="Home" style="margin-left: 10px;">
+						<h:graphicImage library="pictures" name="principal16.png" />
+					</p:commandLink>
+					<h:outputLink value="javascript:void(0)" onclick="document.location='#{request.contextPath}/j_spring_security_logout'" title="Sair" style="margin-left: 10px;">
+						<h:graphicImage library="pictures" name="logout16.png" />
+					</h:outputLink>
+				</td>
+				<td align="right">
+					<h:outputText value="#{request.remoteUser}" style="font-weight: bold; font-variant: small-caps;"/>
+				</td>
+			</tr>
+			</table>
+		</h:form>
+	</sec:ifAnyGranted>
+</ui:composition>
+</html>
